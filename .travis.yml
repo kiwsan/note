@@ -23,6 +23,7 @@ after_script:
   - rm -rf .git
   - eval "$(ssh-agent -s)" && ssh-add ~/.ssh/travis_rsa && ssh -o "StrictHostKeyChecking=no" ${REMOTE_USER}@${SSH_HOST} -v exit
   - git remote add deploy "${REMOTE_USER}@${SSH_HOST}:/opt/note" && git config user.name "Travis CI" && git config user.email "kiwsan+travis@gmail.com" && git status && git add docker-compose.yml && git commit -m "deploy"
+  - git push --force deploy master
 deploy:
   provider: pages
   skip_cleanup: true
