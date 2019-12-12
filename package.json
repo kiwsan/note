@@ -14,8 +14,12 @@
     "upgrade-interactive": "npm-check --update"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.26",
+    "@fortawesome/free-solid-svg-icons": "^5.12.0",
+    "@fortawesome/react-fontawesome": "^0.1.8",
     "@material-ui/core": "^4.7.2",
     "@material-ui/styles": "^4.7.1",
+    "bootstrap": "^4.4.1",
     "gatsby": "^2.18.11",
     "gatsby-plugin-material-ui": "^2.1.6",
     "gatsby-plugin-react-helmet": "^3.1.18",
@@ -27,6 +31,7 @@
     "gatsby-transformer-remark": "^2.6.42",
     "node-sass": "^4.13.0",
     "react": "^16.12.0",
+    "react-bootstrap": "^1.0.0-beta.16",
     "react-dom": "^16.12.0",
     "react-helmet": "^5.2.1",
     "terser": "^4.4.2"

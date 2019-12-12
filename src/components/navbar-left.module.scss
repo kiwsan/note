@@ -1,7 +1,7 @@
 .navbar_left {
   height: 100%;
   position: relative;
-  padding: 20px 0 0 0;
+  padding: 0 0 0 0;
 }
 
 .circle__image {
@@ -31,10 +31,10 @@
 
 .social__media a img {
   width: 30px;
-  margin: 0 8px 0 8px;
+  margin: 20px 8px 0 8px;
 }
 
-.social__media a img:hover {
+.social__media a img:hover {  
   background-color: #d2d2d2;
   border-radius: 50%;
   padding: 2px;

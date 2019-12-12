@@ -1,7 +1,7 @@
 import React from 'react'
 
-import Suggestion from './suggestion'
 import Footer from './footer'
+import PopularPost from './popular-post'
 
 import navbarLeftStyles from './navbar-left.module.scss'
 
@@ -10,12 +10,16 @@ import facebookImage from './images/facebook.png'
 import twitterImage from './images/twitter.png'
 import instagramImage from './images/instagram.png'
 
+import { InputGroup, FormControl, Button } from 'react-bootstrap'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faSearch } from '@fortawesome/free-solid-svg-icons'
+
 const NavbarLeft = () => {
     return (
         <div className={navbarLeftStyles.navbar_left}>
             <div className={navbarLeftStyles.profile__content}>
                 <img src={profileImage} alt="Profile" className={navbarLeftStyles.circle__image} />
-                <h2>Notes for me</h2>
+                <h2>NOTE FOR ME</h2>
                 <p>
                     Web developer, currently focusing on Angular, Java, Kotlin, and .NET Technologies.
                 </p>
@@ -27,7 +31,21 @@ const NavbarLeft = () => {
                 </div>
             </div>
 
-            <Suggestion />
+            <InputGroup className="mt-4 mb-4">
+                <FormControl
+                    placeholder="Search..."
+                    aria-label="Search..."
+                    aria-describedby="search-addon"
+                />
+                <InputGroup.Append>
+                     <Button variant="outline-secondary">
+                        <FontAwesomeIcon icon={faSearch} />
+                     </Button>
+                </InputGroup.Append>
+            </InputGroup>
+
+            <PopularPost />
+
             <Footer />
         </div>
     )

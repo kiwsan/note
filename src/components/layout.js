@@ -1,33 +1,28 @@
 import React from 'react'
-
-import NavbarLeft from './navbar-left'
-import NavbarRight from './navbar-right'
-import NavbarTop from './navbar-top'
-import NarbarBottom from './navbar-bottom'
+import { Container, Row, Col } from 'react-bootstrap'
 
 import layoutStyles from './layout.module.scss'
+import NavbarLeft from './navbar-left'
+import NavbarTop from './navbar-top'
 
 const Layout = (props) => {
     return (
-        <div className={layoutStyles.page__content}>
-            <div className={layoutStyles.navbar__left}>
-                <NavbarLeft />
-            </div>
 
-            <div className={layoutStyles.main__content}>
-                <NavbarTop />
+        <Container className={layoutStyles.page__container}>
+            <Row>
 
-                <div className={layoutStyles.render__content}>
-                    {props.children}
-                </div>
+                <Col sm={4}><NavbarLeft></NavbarLeft></Col>
+                <Col sm={8}>
+                    <NavbarTop></NavbarTop>
 
-                <NarbarBottom />
-            </div>
+                    <div className="mt-5">
+                        {props.children}
+                    </div>
+                </Col>
 
-            <div className={layoutStyles.navbar__right}>
-                <NavbarRight />
-            </div>
-        </div>
+            </Row>
+        </Container>
+
     )
 }
 

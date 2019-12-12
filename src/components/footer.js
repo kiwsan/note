@@ -17,7 +17,7 @@ const Footer = () => {
 
   return (
     <footer className={footerStyles.footer__content}>
-      <p>Created by {data.site.siteMetadata.author} © 2019</p>
+      <p>© 2019 <a href="https://kiwsan.com/" target="_blank">{data.site.siteMetadata.author}</a>, personal blog</p>
     </footer>
   )
 }
