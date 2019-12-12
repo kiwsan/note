@@ -23,6 +23,7 @@ module.exports = {
       },
       // 'gatsby-plugin-styled-components',
     },
+    `gatsby-theme-material-ui`,
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-sass',
     {
