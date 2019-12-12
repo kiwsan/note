@@ -16,9 +16,9 @@ install:
 
 script:
   - gatsby build
-  - cd public
-  - cp index.html 404.html
   - docker-compose.yml public/docker-compose.yml
+  - cd public
+  - cp index.html 404.html  
   # build docker images
   - docker-compose -f docker-compose.yml build
   - docker tag noted $DOCKERHUB_NOTED
