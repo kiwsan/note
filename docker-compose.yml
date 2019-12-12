@@ -1,0 +1,13 @@
+version: '3.2'
+
+services:
+
+  gatsby-site:
+    build:
+      dockerfile: Dockerfile
+      context: .
+    container_name: gatsby-site
+    image: noted
+    restart: unless-stopped
+    ports:
+      - 8000:80

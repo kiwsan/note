@@ -1,0 +1,32 @@
+sudo: required
+language: node_js
+node_js:
+  - "stable"
+notifications:
+  email:
+    onfailure: $EMAIL
+    onsuccess: $EMAIL
+
+services:
+  - docker
+
+before_script:
+  # login docker hub
+  - docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD"
+
+install:
+  - npm install
+
+script:
+  - npm run build
+  # build docker images
+  - docker-compose -f docker-compose.yml build
+  - docker tag noted $DOCKERHUB_NOTED
+
+deploy:
+  provider: script
+  script:
+    # push to docker hub
+    - docker push $DOCKERHUB_NOTED
+  on:
+    branch: noted-development
