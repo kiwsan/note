@@ -1,32 +1,52 @@
 sudo: required
 language: node_js
 node_js:
-  - stable
+- stable
 services:
-  - docker
+- docker
 addons:
   ssh_known_hosts: "${SSH_HOST}"
 before_script:
-  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+- echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
 install:
-  - npm install -g gatsby-cli
-  - npm install
+- npm install -g gatsby-cli
+- npm install
 script:
-  - gatsby build
-  - cd public
-  - cp index.html 404.html
-  - cd ..
-  - docker-compose -f docker-compose.yml build
-  - docker tag noted $DOCKERHUB_NOTED
-  - docker push $DOCKERHUB_NOTED
+- gatsby build
+- cd public
+- cp index.html 404.html
+- cd ..
+- docker-compose -f docker-compose.yml build
+- docker tag noted $DOCKERHUB_NOTED
+- docker push $DOCKERHUB_NOTED
 after_script:
-  - rm -rf .git
-  - git init
-  - eval "$(ssh-agent -s)" && ssh-add ~/.ssh/travis_rsa && ssh -o "StrictHostKeyChecking=no" ${REMOTE_USER}@${SSH_HOST} -v exit
-  - git remote add deploy "${REMOTE_USER}@${SSH_HOST}:/opt/note" && git config user.name "Travis CI" && git config user.email "kiwsan+travis@gmail.com" && git status && git add docker-compose.yml && git commit -m "deploy"
-  - git push --force deploy master
+- rm -rf .git
+- git init
+- eval "$(ssh-agent -s)" && ssh-add ~/.ssh/travis_rsa && ssh -o "StrictHostKeyChecking=no"
+  ${REMOTE_USER}@${SSH_HOST} -v exit
+- git remote add deploy "${REMOTE_USER}@${SSH_HOST}:${REMOTE_APP_DIR}" && git config
+  user.name "Travis CI" && git config user.email "kiwsan+travis@gmail.com" && git
+  status && git add docker-compose.yml && git commit -m "deploy"
+- git push --force deploy master
+- ssh -l ${REMOTE_USER} ${SSH_HOST} "docker-compose -f ${REMOTE_APP_DIR}/public/docker-compose.${TRAVIS_ENVIRONMENT}.yml
+  pull && docker-compose -f ${REMOTE_APP_DIR}/public/docker-compose.${TRAVIS_ENVIRONMENT}.yml
+  up -d"
 before_install:
-  - openssl aes-256-cbc -K $encrypted_58ca57a8e487_key -iv $encrypted_58ca57a8e487_iv
-    -in travis_rsa.enc -out travis_rsa -d
-  - chmod 600 travis_rsa
-  - mv travis_rsa ~/.ssh/travis_rsa
+- openssl aes-256-cbc -K $encrypted_58ca57a8e487_key -iv $encrypted_58ca57a8e487_iv
+  -in travis_rsa.enc -out travis_rsa -d
+- chmod 600 travis_rsa
+- mv travis_rsa ~/.ssh/travis_rsa
+deploy:
+  provider: pages
+  skip_cleanup: true
+  github_token: "$GITHUB_TOKEN"
+  local_dir: public
+  on:
+notifications:
+  email: false    # default notification method
+  slack:
+    rooms: # https://docs.travis-ci.com/user/encryption-keys/
+      secure: lTjQZMw/8lU9uz6vL5q2Q6UkmKB3P2510eztuWA1dU+NieXyMxAaAZ+75yWuymHtgkRTNU45D0Q0nnx9CJa1MhVkz8x3pgSYzOA11ye8+yHbX8VQyM+PF14X08LDG8Od8szJOUDbRGt+UTk9zFGcR9wVGjzQ6SSxbBwKaV3Zs+AXiTRxoZmBjSvwMpAUoIJItxFqzQBpFbEowX+C+gEIxX40JL2rJITFDfttCk/Sr7qoaBbR/hTw06JSR0j4mv9z0D253gXBQqYyE5rUVA7ziV4vvEZsow0iPiYVXVwgn5g/p+w2W7gXIWF/0QwvwxJSC5gtx7Wv+z6P+k755akXi8bWTsxTcfxO2co5CgNJ5a8s8shPE4AoBq1sOaQjGlhErgIl+EoHLKy5gJK142A/6JrTUqZOg7zXQLVYhtB6qWiMgiabyUEa3x5XiVi/AyUIkxR2YyjIiSkbhIHxZOLY5a597Am4Jx29X+Rh8tX+YSdRbXX+gOhJk/qbQqLUpkSSpyi2q1Ymn6Ox787y5CtpiKacxEjPTFhSghdS0ReLN9bbuczTZkgEnPhCcawxXgyXQR5KaxLqJynpFCZxhmVUQ+M8T0zMQi5fD6UYPRQ4mBawMFCDFL4DDMaq3Np0WfQicGx20jvKwNxsxC785MinoqsolrTHrIEvrnmudbXglIg=
+    on_success: always  # change: send a notification when the build status changes.
+    on_failure: always  # always: always send a notification.
+
