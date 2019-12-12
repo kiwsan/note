@@ -16,8 +16,8 @@ script:
   - cd ..
   - docker-compose -f docker-compose.yml build
   - docker tag noted $DOCKERHUB_NOTED
-after_script:
   - docker push $DOCKERHUB_NOTED
+after_script:
   - rm -rf .git
   - eval "$(ssh-agent -s)" && ssh-add ~/.ssh/travis_rsa && ssh -o "StrictHostKeyChecking=no" ${REMOTE_USER}@${SSH_HOST} -v exit
   - git init
