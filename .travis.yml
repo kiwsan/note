@@ -1,41 +1,44 @@
 sudo: required
 language: node_js
 node_js:
-- stable
+  - stable
 services:
-- docker
+  - docker
+branches:
+  only:
+    - master
 addons:
   ssh_known_hosts: "${SSH_HOST}"
 before_script:
-- echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
 install:
-- npm install -g gatsby-cli
-- npm install
+  - npm install -g gatsby-cli
+  - npm install
 script:
-- gatsby build
-- cd public
-- cp index.html 404.html
-- cd ..
-- docker-compose -f docker-compose.yml build
-- docker tag noted $DOCKERHUB_NOTED
-- docker push $DOCKERHUB_NOTED
+  - gatsby build
+  - cd public
+  - cp index.html 404.html
+  - cd ..
+  - docker-compose -f docker-compose.yml build
+  - docker tag noted $DOCKERHUB_NOTED
+  - docker push $DOCKERHUB_NOTED
 after_script:
-- rm -rf .git
-- git init
-- eval "$(ssh-agent -s)" && ssh-add ~/.ssh/travis_rsa && ssh -o "StrictHostKeyChecking=no"
-  ${REMOTE_USER}@${SSH_HOST} -v exit
-- git remote add deploy "${REMOTE_USER}@${SSH_HOST}:${REMOTE_APP_DIR}" && git config
-  user.name "Travis CI" && git config user.email "kiwsan+travis@gmail.com" && git
-  status && git add docker-compose.yml && git commit -m "deploy"
-- git push --force deploy master
-- ssh -l ${REMOTE_USER} ${SSH_HOST} "docker-compose -f ${REMOTE_APP_DIR}/public/docker-compose.${TRAVIS_ENVIRONMENT}.yml
-  pull && docker-compose -f ${REMOTE_APP_DIR}/public/docker-compose.${TRAVIS_ENVIRONMENT}.yml
-  up -d"
+  - rm -rf .git
+  - git init
+  - eval "$(ssh-agent -s)" && ssh-add ~/.ssh/travis_rsa && ssh -o "StrictHostKeyChecking=no"
+    ${REMOTE_USER}@${SSH_HOST} -v exit
+  - git remote add deploy "${REMOTE_USER}@${SSH_HOST}:${REMOTE_APP_DIR}" && git config
+    user.name "Travis CI" && git config user.email "kiwsan+travis@gmail.com" && git
+    status && git add docker-compose.yml && git commit -m "deploy"
+  - git push --force deploy master
+  - ssh -l ${REMOTE_USER} ${SSH_HOST} "docker-compose -f ${REMOTE_APP_DIR}/public/docker-compose.${TRAVIS_ENVIRONMENT}.yml
+    pull && docker-compose -f ${REMOTE_APP_DIR}/public/docker-compose.${TRAVIS_ENVIRONMENT}.yml
+    up -d"
 before_install:
-- openssl aes-256-cbc -K $encrypted_58ca57a8e487_key -iv $encrypted_58ca57a8e487_iv
-  -in travis_rsa.enc -out travis_rsa -d
-- chmod 600 travis_rsa
-- mv travis_rsa ~/.ssh/travis_rsa
+  - openssl aes-256-cbc -K $encrypted_58ca57a8e487_key -iv $encrypted_58ca57a8e487_iv
+    -in travis_rsa.enc -out travis_rsa -d
+  - chmod 600 travis_rsa
+  - mv travis_rsa ~/.ssh/travis_rsa
 deploy:
   provider: pages
   skip_cleanup: true
