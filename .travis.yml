@@ -16,7 +16,7 @@ install:
 
 script:
   - gatsby build
-  - docker-compose.yml public/docker-compose.yml
+  - cp docker-compose.yml public/docker-compose.yml
   - cd public
   - cp index.html 404.html  
   # build docker images
