@@ -2,6 +2,8 @@
 
 Work in progress.
 
+[![Build Status](https://travis-ci.org/kiwsan/note.svg?branch=master)](https://travis-ci.org/kiwsan/note)
+
 [GatsbyJS](https://www.gatsbyjs.org/) <br />
 
 ## Description
