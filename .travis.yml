@@ -2,31 +2,34 @@ sudo: required
 language: node_js
 node_js:
   - "stable"
-notifications:
-  email:
-    onfailure: $EMAIL
-    onsuccess: $EMAIL
 
 services:
   - docker
 
 before_script:
   # login docker hub
-  - docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD"
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
 
 install:
+  - npm install -g gatsby-cli
   - npm install
 
 script:
-  - npm run build
+  - gatsby build
+  - cd public
+  - cp index.html 404.html
   # build docker images
   - docker-compose -f docker-compose.yml build
   - docker tag noted $DOCKERHUB_NOTED
 
+after_script:
+  # push to docker hub
+  - docker push $DOCKERHUB_NOTED
+
 deploy:
-  provider: script
-  script:
-    # push to docker hub
-    - docker push $DOCKERHUB_NOTED
+  provider: pages
+  skip_cleanup: true
+  github_token: $GITHUB_TOKEN
+  local_dir: public
   on:
-    branch: noted-development
+    branch: master
