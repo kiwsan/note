@@ -42,6 +42,7 @@ deploy:
   github_token: "$GITHUB_TOKEN"
   local_dir: public
   on:
+    branch: master
 notifications:
   email: false    # default notification method
   slack:
