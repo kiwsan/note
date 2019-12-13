@@ -6,6 +6,7 @@ import Head from '../components/head'
 
 import indexStyles from './index.module.scss';
 import Skeleton from "@material-ui/lab/Skeleton";
+import SEO from "../components/seo";
 
 const IndexPage = () => {
 
@@ -31,6 +32,7 @@ const IndexPage = () => {
         <Layout>
 
             <Head title="Home" />
+            <SEO title="Home" keywords={[`gatsby`, `kiwsan`, `note`]} />
             <ol className={indexStyles.posts}>
 
                 {data.allMarkdownRemark.edges.map((edge, index) => {

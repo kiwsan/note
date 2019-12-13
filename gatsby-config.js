@@ -8,7 +8,8 @@ module.exports = {
   /* Your site config here */
   siteMetadata: {
     title: 'NOTE FOR ME | BE MYSELF',
-    author: 'kiwsan'
+    author: 'kiwsan',
+    description: 'Web developer, currently focusing on Angular, Java, Kotlin, and .NET Technologies.'
   },
   plugins: [
     {

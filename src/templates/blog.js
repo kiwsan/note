@@ -6,6 +6,7 @@ import blogStyles from './blog.module.scss'
 import Layout from '../components/layout'
 
 import Head from '../components/head'
+import SEO from "../components/seo";
 
 export const query = graphql`
 query (
@@ -32,6 +33,7 @@ const Blog = (props) => {
 
     return (
         <Layout>
+            <SEO title={title} keywords={[`blog`]} />
             <Head title={title}/>
 
             <div className={blogStyles.blog__content}>
