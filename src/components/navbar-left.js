@@ -1,7 +1,6 @@
 import React from 'react'
 
-import Footer from './footer'
-import PopularPost from './popular-post'
+import PopularPost from '../templates/popular-post'
 
 import navbarLeftStyles from './navbar-left.module.scss'
 
@@ -25,9 +24,9 @@ const NavbarLeft = () => {
                 </p>
 
                 <div className={navbarLeftStyles.social__media}>
-                    <a href="/"><img src={facebookImage} alt="Facebook"></img></a>
-                    <a href="/"><img src={instagramImage} alt="Instagram"></img></a>
-                    <a href="/"><img src={twitterImage} alt="Twitter"></img></a>
+                    <a href="/"><img src={facebookImage} alt="Facebook"/></a>
+                    <a href="/"><img src={instagramImage} alt="Instagram"/></a>
+                    <a href="/"><img src={twitterImage} alt="Twitter"/></a>
                 </div>
             </div>
 
@@ -45,8 +44,6 @@ const NavbarLeft = () => {
             </InputGroup>
 
             <PopularPost />
-
-            <Footer />
         </div>
     )
 }

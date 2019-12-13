@@ -1,5 +1,5 @@
 import React from 'react'
-import { graphql } from 'gatsby'
+import {graphql} from 'gatsby'
 
 import blogStyles from './blog.module.scss'
 
@@ -28,20 +28,21 @@ query (
 `
 
 const Blog = (props) => {
-  const title = props.data.markdownRemark.frontmatter.title;
+    const title = props.data.markdownRemark.frontmatter.title;
 
-  return (
-    <Layout>
-      <Head title={title} />
+    return (
+        <Layout>
+            <Head title={title}/>
 
-      <div className={blogStyles.blog__content}>
-        <h1>{title}</h1>
-        <p>{props.data.markdownRemark.frontmatter.date}</p>
+            <div className={blogStyles.blog__content}>
 
-        <div dangerouslySetInnerHTML={{ __html: props.data.markdownRemark.html }}></div>
-      </div>
-    </Layout>
-  )
+                <h1>{title}</h1>
+                <p>{props.data.markdownRemark.frontmatter.date}</p>
+
+                <div dangerouslySetInnerHTML={{__html: props.data.markdownRemark.html}}></div>
+            </div>
+        </Layout>
+    )
 }
 
 export default Blog

@@ -5,6 +5,7 @@ import Layout from '../components/layout'
 import Head from '../components/head'
 
 import indexStyles from './index.module.scss';
+import Skeleton from "@material-ui/lab/Skeleton";
 
 const IndexPage = () => {
 
@@ -28,6 +29,7 @@ const IndexPage = () => {
 
     return (
         <Layout>
+
             <Head title="Home" />
             <ol className={indexStyles.posts}>
 
@@ -36,7 +38,8 @@ const IndexPage = () => {
                     return (
                         <li key={index} className={indexStyles.post}>
                             <Link to={`/${edge.node.fields.slug}`}>
-                                <h2>{edge.node.frontmatter.title}</h2>
+                                <Skeleton variant="rect" height={300}/>
+                                <h2 className="mt-2">{edge.node.frontmatter.title}</h2>
                                 <p>{edge.node.frontmatter.date}</p>
                             </Link>
                         </li>

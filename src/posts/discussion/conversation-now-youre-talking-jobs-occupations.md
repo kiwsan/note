@@ -1,3 +1,8 @@
+---
+title: "Exercise 4 Discussion What do you do?"
+date: "2019-13-12"
+---
+
 ## Exercise 4 Discussion
 
 1. What do you do?
