@@ -1,6 +1,7 @@
 import React from "react"
 import PropTypes from "prop-types"
 
+// https://www.gatsbyjs.org/docs/adding-tags-and-categories-to-blog-posts/
 // Utilities
 import kebabCase from "lodash/kebabCase"
 
