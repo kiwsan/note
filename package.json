@@ -31,12 +31,14 @@
     "gatsby-remark-relative-images": "^0.2.3",
     "gatsby-source-filesystem": "^2.1.42",
     "gatsby-transformer-remark": "^2.6.42",
+    "lodash.kebabcase": "^4.1.1",
     "node-sass": "^4.13.0",
+    "prop-types": "^15.7.2",
     "react": "^16.12.0",
     "react-bootstrap": "^1.0.0-beta.16",
     "react-dom": "^16.12.0",
     "react-helmet": "^5.2.1",
-    "terser": "^4.4.2"
+    "terser": "^4.4.2npm audit fix"
   },
   "devDependencies": {
     "env-cmd": "^10.0.1",

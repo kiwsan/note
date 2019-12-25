@@ -1,6 +1,7 @@
 ---
 title: "Introduction"
 date: "2019-13-12"
+tags: ["english", "beginner"]
 ---
 
 ## Introduction

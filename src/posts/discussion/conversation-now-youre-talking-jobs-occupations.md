@@ -1,6 +1,7 @@
 ---
 title: "Exercise 4 Discussion What do you do?"
 date: "2019-13-12"
+tags: ["english", "beginner"]
 ---
 
 ## Exercise 4 Discussion

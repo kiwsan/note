@@ -1,6 +1,7 @@
 ---
 title: "Gerunds and infinitives"
 date: "2019-13-12"
+tags: ["english", "beginner"]
 ---
 
 ## Gerunds and infinitives
