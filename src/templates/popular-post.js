@@ -11,7 +11,7 @@ const PopularPost = () => {
     return (
         <div>
             
-            <p>Popular posts</p>
+            <p>Popular post</p>
 
             <Row>
                 <Col sm={4} className="mb-2">
