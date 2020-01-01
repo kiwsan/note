@@ -73,3 +73,6 @@ A ready to use, easy to customize [GatsbyJS](https://github.com/gatsbyjs/gatsby)
     ```sh
     $ curl localhost:8000
     ```
+    
+    ## User Story (Scrum)
+    - https://tree.taiga.io/project/kiwsan-note/timeline
