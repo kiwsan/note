@@ -1,59 +1,14 @@
 {
-  "name": "the-note",
+  "name": "note",
   "private": true,
-  "description": "A simplified bare-bones starter for Gatsby",
-  "version": "0.1.0",
-  "license": "MIT",
-  "scripts": {
-    "build": "gatsby build",
-    "develop": "env-cmd .env gatsby develop",
-    "format": "prettier --write src/**/*.{js,jsx}",
-    "start": "npm run develop",
-    "serve": "gatsby serve",
-    "test": "echo \"no test specified\" && exit 0",
-    "upgrade-interactive": "npm-check --update"
-  },
   "dependencies": {
-    "@fortawesome/fontawesome-svg-core": "^1.2.26",
-    "@fortawesome/free-solid-svg-icons": "^5.12.0",
-    "@fortawesome/react-fontawesome": "^0.1.8",
-    "@material-ui/core": "^4.7.2",
-    "@material-ui/icons": "^4.5.1",
-    "@material-ui/lab": "^4.0.0-alpha.35",
-    "@material-ui/styles": "^4.7.1",
-    "bootstrap": "^4.4.1",
-    "gatsby": "^2.18.11",
-    "gatsby-plugin-material-ui": "^2.1.6",
-    "gatsby-plugin-react-helmet": "^3.1.18",
-    "gatsby-plugin-sass": "^2.1.26",
-    "gatsby-plugin-sharp": "^2.3.7",
-    "gatsby-remark-images": "^3.1.37",
-    "gatsby-remark-relative-images": "^0.2.3",
-    "gatsby-source-filesystem": "^2.1.42",
-    "gatsby-transformer-remark": "^2.6.42",
-    "lodash.kebabcase": "^4.1.1",
-    "node-sass": "^4.13.0",
-    "prop-types": "^15.7.2",
-    "react": "^16.12.0",
-    "react-bootstrap": "^1.0.0-beta.16",
-    "react-dom": "^16.12.0",
-    "react-helmet": "^5.2.1",
-    "terser": "^4.4.2npm audit fix"
+    "@rails/actioncable": "^6.0.0",
+    "@rails/ujs": "^6.0.0",
+    "@rails/webpacker": "4.2.2",
+    "turbolinks": "^5.2.0"
   },
+  "version": "0.1.0",
   "devDependencies": {
-    "env-cmd": "^10.0.1",
-    "npm-check": "^5.9.0",
-    "prettier": "^1.19.1"
-  },
-  "resolutions": {
-    "terser-webpack-plugin/terser": "4.0.0",
-    "terser": "4.0.0"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/gatsbyjs/gatsby-starter-hello-world"
-  },
-  "bugs": {
-    "url": "https://github.com/gatsbyjs/gatsby/issues"
+    "webpack-dev-server": "^3.11.0"
   }
 }
