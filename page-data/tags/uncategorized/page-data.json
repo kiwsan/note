@@ -1,0 +1,1 @@
+{"componentChunkName":"component---src-templates-tags-js","path":"/tags/uncategorized/","result":{"data":{"allMarkdownRemark":{"totalCount":2,"edges":[{"node":{"fields":{"slug":"reactjs"},"frontmatter":{"title":"React"}}},{"node":{"fields":{"slug":"nodejs"},"frontmatter":{"title":"NodeJs"}}}]}},"pageContext":{"tag":"uncategorized"}},"staticQueryHashes":[]}
