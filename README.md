@@ -1,5 +1,9 @@
 # The note
 
+Deploy your next app in seconds. Get $100 in cloud credits from @DigitalOcean using my link:
+
+[![DigitalOcean Referral Badge](https://web-platforms.sfo2.digitaloceanspaces.com/WWW/Badge%202.svg)](https://www.digitalocean.com/?refcode=0e2c3672d1dc&utm_campaign=Referral_Invite&utm_medium=Referral_Program&utm_source=badge)
+
 Work in progress.
 
 [![Build Status](https://travis-ci.org/kiwsan/note.svg?branch=master)](https://travis-ci.org/kiwsan/note)
